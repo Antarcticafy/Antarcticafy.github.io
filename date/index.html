@@ -3,9 +3,6 @@
 <head>
     <script>
         window.onload = function () {
-            var date = new Date();
-            console.log(date);
-            document.getElementById('date').innerHTML = date;
             setInterval(() => {
                 var date = new Date();
                 console.log(date);
@@ -13,6 +10,11 @@
             }, 1);
         };
     </script>
+    <style>
+        #date {
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
