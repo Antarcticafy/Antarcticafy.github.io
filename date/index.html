@@ -9,7 +9,7 @@
             setInterval(() => {
                 var date = new Date();
                 console.log(date);
-                document.getElementById('date').innerHTML = date;
+                document.getElementById('date').innerHTML = "Year: " + date.getFullYear + " Month: " + date.getMonth + " Day: " + date.getDay + " Hour: " + date.getHours + " Minute: " + date.getMinutes + " Second: " + date.getSeconds + "." + date.getMilliseconds;
             }, 1);
         };
     </script>
