@@ -3,12 +3,15 @@
 <head>
     <script>
         window.onload = function () {
-            while (true) {
-                const date = new Date();
+            var date = new Date();
+            console.log(date);
+            document.getElementById('date').innerHTML = date;
+            setInterval(() => {
+                var date = new Date();
                 console.log(date);
-                document.getElementById('date').innerHTML = date;
-            }
-        }
+                ocument.getElementById('date').innerHTML = date;
+            }, 1000);
+        };
     </script>
 </head>
 
