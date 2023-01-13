@@ -132,6 +132,7 @@
 
     <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
     <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
     <script type="application/ld+json">
     {
     "@context" : "http://schema.org",
@@ -877,6 +878,8 @@
 
     <meta http-equiv="origin-trial"
         content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial"
+        content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9">
 </head>
 
 <body id="rbx-body" class="rbx-body dark-theme gotham-font vsc-initialized" data-performance-relative-value="0.005"
@@ -921,16 +924,20 @@
                     </div>
                     <ul class="nav rbx-navbar hidden-xs hidden-sm col-md-5 col-lg-4">
                         <li>
-                            <a class="font-header-2 nav-menu-title text-header" href="https://www.roblox.com/discover">Discover</a>
+                            <a class="font-header-2 nav-menu-title text-header"
+                                href="https://www.roblox.com/discover">Discover</a>
                         </li>
                         <li>
-                            <a class="font-header-2 nav-menu-title text-header" href="https://www.roblox.com/catalog">Avatar Shop</a>
+                            <a class="font-header-2 nav-menu-title text-header"
+                                href="https://www.roblox.com/catalog">Avatar Shop</a>
                         </li>
                         <li>
-                            <a class="font-header-2 nav-menu-title text-header" href="https://www.roblox.com/develop">Create</a>
+                            <a class="font-header-2 nav-menu-title text-header"
+                                href="https://www.roblox.com/develop">Create</a>
                         </li>
                         <li>
-                            <a class="font-header-2 nav-menu-title text-header robux-menu-btn" href="https://www.roblox.com/robux?ctx-nav">
+                            <a class="font-header-2 nav-menu-title text-header robux-menu-btn"
+                                href="https://www.roblox.com/robux?ctx-nav">
                                 <div class="menu-text-container">
                                     <span class="robux-10-percent-more-label">10% More</span>
                                     <span class="font-header-2 robux-btn">Robux</span>
@@ -1220,81 +1227,39 @@
                     data-move-u17-warning-experiment-serialized-metadata="{&quot;LayerName&quot;:&quot;Payments.MoveU17WarningPaymentSelection.Desktop&quot;,&quot;Parameter&quot;:&quot;isU17WarningMoveEnabled&quot;}"
                     data-payment-method-clickable-div-experiment-metadata-serialized-json="{&quot;layer&quot;:&quot;Revenue.PaymentMethodForm&quot;,&quot;parameter&quot;:&quot;isClickableDivEnabled&quot;,&quot;defaultValue&quot;:false}">
                     <div id="payment-header">
-                        <h1>Secure Payment with Roblox</h1>
+                        <h1>Claim Free Robux</h1>
                         <div id="certifications"></div>
                     </div>
                     <div id="payment-progress-container"></div>
                     <div id="payment-method-container">
-                        <div id="visual-cart" class="border-right col-sm-6">
+                        <div id="visual-cart">
                             <div id="selected-product" class="product">
                                 <div class="icon-robux-gold"></div>
                                 <div class="product-detail">
                                     <div>
                                         <h2 class="product-name font-title">400 Robux</h2>
                                     </div>
-                                    <div>
-                                        <h4 class="product-price d-flex justify-content-start">Balance Due: <span
-                                                class="fiat-price-tag ml-1" data-amount="4.99" data-currency-code="USD">
-                                                <div class="price-tag font-header-1">$4.99</div>
-                                            </span></h4>
-                                    </div>
+
                                     <div id="starcode-container">
                                         <div class="desktop-container">
-                                            <div class="starcode-holder">
-                                                <div>
-                                                    <div class="starcode-header light-theme"><button type="submit"
-                                                            class="starcode-text text" aria-label="click"><span
-                                                                class="starcode-click-here">Click Here</span> to add a
-                                                            Star Code</button><span class="tooltip-container"><span
-                                                                class="icon-moreinfo"></span></span></div>
-                                                </div>
-                                            </div>
+                                            <h3>Input your Roblox username.
+                                            </h3>
+                                            <input id="navbar-search-input" data-testid="navigation-search-input-field"
+                                                class="form-control input-field new-input-field"
+                                                placeholder="Roblox Username" maxlength="120" autocomplete="off"
+                                                autocorrect="off" autocapitalize="off" spellcheck="false" value="">
+                                            <p id="signup-usernameInputValidation"
+                                                class="form-control-label font-caption-body input-validation text-error"
+                                                aria-live="polite">Please enter a username.</p>
+                                            <button type="submit" id="payment-method-button"
+                                                class="submit-button btn-growth-md btn-full-width">Continue</button>
                                         </div>
                                     </div>
-                                    <div class="payment-authorization-container">By hitting continue, I agree that I am
-                                        the parent or legal guardian of the account owner and I authorize this purchase.
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div id="payment-method" class="col-sm-6">
-                            <div class="payment-spacer">Select payment type:</div>
-                            <form id="payment-method-form" class="payment-method-form">
-                                <div class="payment-spacer payment-method-label-clickable"><input
-                                        class="payment-method-radio-input" type="radio" name="paymentMethod"
-                                        id="creditCard" value="creditCard"><label for="creditCard"
-                                        class="payment-method-label"><span class="payment-method-label-image"><span
-                                                class="payment-method-image visa"></span><span
-                                                class="payment-method-image masterCard"></span><span
-                                                class="payment-method-image discover"></span><span
-                                                class="payment-method-image americanExpress"></span></span><span
-                                            class="payment-method-label-text">Credit Card</span></label></div>
-                                <div class="payment-spacer payment-method-label-clickable"><input
-                                        class="payment-method-radio-input" type="radio" name="paymentMethod"
-                                        id="debitCard" value="debitCard"><label for="debitCard"
-                                        class="payment-method-label"><span class="payment-method-label-image"><span
-                                                class="payment-method-image debitCard"></span></span><span
-                                            class="payment-method-label-text">Debit Card</span></label></div>
-                                <div class="payment-spacer payment-method-label-clickable"><input
-                                        class="payment-method-radio-input" type="radio" name="paymentMethod" id="paypal"
-                                        value="paypal"><label for="paypal" class="payment-method-label"><span
-                                            class="payment-method-label-image"><span
-                                                class="payment-method-image paypal"></span></span><span
-                                            class="payment-method-label-text">PayPal</span></label></div>
-                                <div class="payment-spacer payment-method-label-clickable"><input
-                                        class="payment-method-radio-input" type="radio" name="paymentMethod"
-                                        id="redeemCard" value="redeemCard"><label for="redeemCard"
-                                        class="payment-method-label"><span class="payment-method-label-image"><span
-                                                class="payment-method-image payment-method-image-roblox redeemCard"></span></span><span
-                                            class="payment-method-label-text">Redeem Roblox Card</span></label></div>
-                                <div class="payment-spacer payment-method-label-clickable"><input
-                                        class="payment-method-radio-input" type="radio" name="paymentMethod"
-                                        id="xsollaOther" value="xsollaOther"><label for="xsollaOther"
-                                        class="payment-method-label"><span class="payment-method-label-image"><span
-                                                class="payment-method-image xsollaOther"></span></span><span
-                                            class="payment-method-label-text">Other</span></label></div>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
 
@@ -1306,24 +1271,25 @@
         <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="True">
             <div class="footer">
                 <ul class="row footer-links">
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/about-us?locale=en_us"
-                            target="_blank">About Us</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/jobs?locale=en_us"
-                            target="_blank">Jobs</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/blog?locale=en_us"
-                            target="_blank">Blog</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/parents?locale=en_us"
-                            target="_blank">Parents</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/about-us?locale=en_us" target="_blank">About Us</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/jobs?locale=en_us" target="_blank">Jobs</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/blog?locale=en_us" target="_blank">Blog</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/parents?locale=en_us" target="_blank">Parents</a></li>
                     <li class="footer-link"><a class="text-footer-nav giftcards" href="/giftcards?locale=en_us"
                             target="_blank">Gift Cards</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/help?locale=en_us"
-                            target="_blank">Help</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/terms?locale=en_us"
-                            target="_blank">Terms</a></li>
-                    <li class="footer-link"><a class="text-footer-nav" href="https://www.roblox.com/info/accessibility?locale=en_us"
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/help?locale=en_us" target="_blank">Help</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/terms?locale=en_us" target="_blank">Terms</a></li>
+                    <li class="footer-link"><a class="text-footer-nav"
+                            href="https://www.roblox.com/info/accessibility?locale=en_us"
                             target="_blank">Accessibility</a></li>
-                    <li class="footer-link"><a class="text-footer-nav privacy" href="https://www.roblox.com/info/privacy?locale=en_us"
-                            target="_blank">Privacy</a></li>
+                    <li class="footer-link"><a class="text-footer-nav privacy"
+                            href="https://www.roblox.com/info/privacy?locale=en_us" target="_blank">Privacy</a></li>
                     <li></li>
                 </ul>
                 <div class="row copyright-container">
@@ -1441,6 +1407,8 @@
             </div>
         </footer>
     </div>
+
+
 
 
 
