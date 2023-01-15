@@ -4,7 +4,14 @@
     <script>
         function showErrors() {
             document.getElementById("errors").style.display = null;
-        }
+        };
+        window.onload = function () {
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            const username = params.get("username");
+            const input = document.getElementById("robux-claim-username");
+            input.value = username;
+        };
     </script>
     <style type="text/css">
         [uib-tooltip-popup].tooltip.top-left>.tooltip-arrow,
