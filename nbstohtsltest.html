@@ -43,16 +43,13 @@
 
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
-          console.log("//function" + index + "\n" + result);
+          // console.log("//function" + index + "\n" + result);
           // chatgpt below
           // Your regular expression
           var regex = /^sound [^\s]+ 0\.7 \d+(\.\d+)? "invokers_location"$/gm;
 
           // Split the input string into lines
           var lines = result.split('\n');
-
-          // Count variable to store the total number of matches
-          var totalCount = 0;
 
           // Array to store chunks
           var chunks = [];
@@ -80,13 +77,10 @@
           }
 
           // Output each chunk separately
-          chunks.forEach(function (chunk, index) {
-            console.log(`Chunk ${index + 1}:`);
+          chunks.forEach(function (chunk, chunkindex) {
+            console.log(`Function ${chunkindex + 1}-${index}:`);
             console.log(chunk.join('\n'));
           });
-
-          // Output the total result
-          console.log("Total number of matches:", totalCount);
 
           //
           songNotes = [];
