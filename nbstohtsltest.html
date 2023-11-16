@@ -1,5 +1,6 @@
 <input type="file" id="file-input">
 <p>make sure it is minecraft compatable nbs file</p>
+<p>make function to play all functions at once</p>
 <p>check console for output in htsl</p>
 
 <script src="https://cdn.jsdelivr.net/npm/@encode42/nbs.js"></script> <!-- Import NBS.js -->
@@ -24,8 +25,6 @@
           "note.harp", "note.bass", "note.bd", "note.snare", "note.harp", "", "", "", "", "", "", "", "", "", "", "note.pling"
         ];
 
-        console.log(song);
-
         song["layers"].forEach((element, index) => {
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
@@ -43,7 +42,6 @@
 
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
-          // console.log("//function" + index + "\n" + result);
           // chatgpt below
           // Your regular expression
           var regex = /^sound [^\s]+ 0\.7 \d+(\.\d+)? "invokers_location"$/gm;
