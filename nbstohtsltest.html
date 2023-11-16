@@ -70,7 +70,10 @@ for (var i = 0; i < lines.length; i++) {
         if (totalCount % 25 === 0) {
             chunks.push(currentChunk);
             currentChunk = [];
-        }
+        } else {
+        // Include non-"sound" lines in the chunks
+        currentChunk.push(line);
+    }
     }
 
     // Process the line using the regular expression
