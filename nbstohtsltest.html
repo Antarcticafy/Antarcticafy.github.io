@@ -58,16 +58,18 @@
           var chunks = [];
           var currentChunk = [];
 
-          // Process each line separately, splitting after every 25th line with "invokers_location"
+          // Process each line separately, splitting after every 25th line that matches the regular expression
           for (var i = 0; i < lines.length; i++) {
             var line = lines[i];
 
-            // Check if the line contains "invokers_location"
-            if (line.includes("invokers_location")) {
-              totalCount++;
+            // Process the line using the regular expression
+            var match = regex.exec(line);
+            if (match !== null) {
+              // Handle the match as needed
+              currentChunk.push(line);
 
-              // Split the string every 25 occurrences
-              if (totalCount % 25 === 0) {
+              // Split the string every 25 occurrences based on the regular expression
+              if (currentChunk.length % 25 === 0) {
                 chunks.push(currentChunk);
                 currentChunk = [];
               }
@@ -75,20 +77,12 @@
               // Include non-"sound" lines in the chunks
               currentChunk.push(line);
             }
-
-            // Process the line using the regular expression
-            var match = regex.exec(line);
-            if (match !== null) {
-                // Handle the match as needed
-                currentChunk.push(line);
-            }
           }
 
           // Output each chunk separately
           chunks.forEach(function (chunk, index) {
             console.log(`Chunk ${index + 1}:`);
             console.log(chunk.join('\n'));
-            console.log("------------------------");
           });
 
           // Output the total result
