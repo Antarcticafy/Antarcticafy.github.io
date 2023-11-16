@@ -1,5 +1,5 @@
 <input type="file" id="file-input">
-<p>early wip it wont add a conditional to add more than 25 sounds, make sure it is minecraft compatable nbs file</p>
+<p>make sure it is minecraft compatable nbs file</p>
 <p>check console for output in htsl</p>
 
 <script src="https://cdn.jsdelivr.net/npm/@encode42/nbs.js"></script> <!-- Import NBS.js -->
@@ -78,7 +78,7 @@
 
           // Output each chunk separately
           chunks.forEach(function (chunk, chunkindex) {
-            console.log(`Function ${chunkindex + 1}-${index}:`);
+            console.log(`Function ${index}-${chunkindex + 1}:`);
             console.log(chunk.join('\n'));
           });
 
