@@ -1,5 +1,5 @@
 <input type="file" id="file-input">
-<p>early wip it wont add a conditional to add more than 25 sounds, make sure it is minecraft compatable nbs file, only does harp instrument for now</p>
+<p>early wip it wont add a conditional to add more than 25 sounds, make sure it is minecraft compatable nbs file</p>
 <p>check console for output in htsl</p>
 
 <script src="https://cdn.jsdelivr.net/npm/@encode42/nbs.js"></script> <!-- Import NBS.js -->
@@ -19,6 +19,10 @@
         let songNotes = [];
         let songNoteIndexes = [];
         let songNotePauses = [];
+        let songNoteInstrument = [];
+        const instrumentMapping = [
+          "note.harp", "note.bass", "note.bd", "note.snare", "note.harp", "", "", "", "", "", "", "", "", "", "", "note.pling"
+        ];
 
         console.log(song);
 
@@ -26,6 +30,7 @@
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
             songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
+            songNoteInstrument.push(element.instrument);
           });
           songNoteIndexes.forEach((element, index, array) => {
             if (index > 0) {
@@ -33,10 +38,11 @@
             }
           });
           const result = songNotes.map((value, index) => {
-            const pauseValue = songNotePauses[index];
+            const pauseValue = songNotePauses[index] || "5";
+            const instrument = instrumentMapping[songNoteInstrument[index]];
 
-            return `sound note.harp 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
-          }).join('\n');
+            return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
+          }).join("\n");
           console.log(result);
           songNotes = [];
           songNoteIndexes = [];
