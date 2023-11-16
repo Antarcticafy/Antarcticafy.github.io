@@ -20,26 +20,27 @@
         let songNoteIndexes = [];
         let songNotePauses = [];
 
-        console.log(song["layers"][0]["notes"]);
-        song["layers"][0]["notes"].forEach((element, index, array) => {
-          console.log(element.key + ", " + (index + 1)); //key and index+1  if you use the index number - the previous one it gets how long it is
-          console.log((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000) //use count (-33), then 2 ^ ((use count - 12) / 12) for pitch, then rounded to 7 decimal places
-          songNoteIndexes.push(index + 1);
-          songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
-        });
-        songNoteIndexes.forEach((element, index, array) => {
-          if (index > 0) {
-            songNotePauses.push((element - array[index - 1])*2);
-          }
-        })
-        console.log(songNotes);
-        console.log(songNotePauses);
-        const result = songNotes.map((value, index) => {
-          const pauseValue = songNotePauses[index];
+        song["layers"].forEach(element => {
+          element["notes"].forEach((element, index, array) => {
+            songNoteIndexes.push(index + 1);
+            songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
+          });
+          songNoteIndexes.forEach((element, index, array) => {
+            if (index > 0) {
+              songNotePauses.push((element - array[index - 1]) * 2);
+            }
+          });
+          const result = songNotes.map((value, index) => {
+            const pauseValue = songNotePauses[index];
 
-          return `sound note.harp 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
-        }).join('\n');
-        console.log(result);
+            return `sound note.harp 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
+          }).join('\n');
+          console.log(result);
+          songNotes = [];
+          songNoteIndexes = [];
+          songNotePauses = [];
+        });
+
       });
     });
   });
