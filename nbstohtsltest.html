@@ -8,14 +8,14 @@
 
     // Clear the file input (QOL)
     input.value = null;
-    
-    console.clear();
 
     // Initialize file input
     input.addEventListener("change", () => {
       const songFile = input.files[0]; // Read a NBS file
       songFile.arrayBuffer().then(buffer => { // Create an ArrayBuffer
         const song = NBSjs.fromArrayBuffer(buffer); // Parse song from ArrayBuffer
+
+        console.clear();
 
         let songNotes = [];
         let songNoteIndexes = [];
