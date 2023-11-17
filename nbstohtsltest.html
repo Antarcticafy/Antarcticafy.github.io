@@ -26,6 +26,8 @@
           "note.harp", "note.bass", "note.bd", "note.snare", "note.harp", "", "", "", "", "", "", "", "", "", "", "note.pling"
         ];
 
+        console.log(song);
+
         song["layers"].forEach((element, index) => {
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
