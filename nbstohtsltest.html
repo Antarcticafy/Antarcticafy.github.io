@@ -22,6 +22,7 @@
         const instrumentMapping = [
           "note.harp", "note.bass", "note.bd", "note.snare", "note.hat", "", "", "", "", "", "", "", "", "", "", "note.pling"
         ];
+        const resultArray = [];
 
         console.log(song);
 
@@ -43,6 +44,15 @@
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
           console.log(result);
+
+          result.split('\n').forEach((line, index, array) => {
+            if (index % 50 === 0) {
+              resultArray.push(array.slice(index, index + 50).join('\n'));
+            }
+          });
+
+          console.log(resultArray);
+
           songNotes = [];
           songNoteIndexes = [];
           songNotePauses = [];
