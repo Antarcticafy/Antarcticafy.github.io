@@ -26,7 +26,7 @@
 
         console.log(song);
 
-        song["layers"].forEach(element => {
+        song["layers"].forEach((element, index) => {
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
             songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
@@ -51,8 +51,8 @@
             }
           });
 
-          resultArray.forEach((chunk) => {
-            console.log(chunk);
+          resultArray.forEach((chunk, chunkIndex) => {
+            console.log(`Function L${index}-C${chunkIndex}:\n${chunk}`);
           });
 
           songNotes = [];
