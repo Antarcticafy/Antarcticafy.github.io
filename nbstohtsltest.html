@@ -45,6 +45,7 @@
 
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
+          console.log(result);
           // chatgpt below
           // Your regular expression
           var regex = /^sound [^\s]+ 0\.7 \d+(\.\d+)? "invokers_location"$/gm;
