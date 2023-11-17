@@ -28,7 +28,7 @@
 
         console.log(song);
 
-        song["layers"].forEach((element, index) => {
+        song["layers"].forEach(element => {
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
             songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
@@ -46,45 +46,6 @@
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
           console.log(result);
-          // chatgpt below
-          // Your regular expression
-          var regex = /^sound .*? 0\.7 \d+(\.\d+)? "invokers_location"$/gm;
-
-          // Split the input string into lines
-          var lines = result.split('\n');
-
-          // Array to store chunks
-          var chunks = [];
-          var currentChunk = [];
-
-          // Process each line separately, splitting after every 25th line that matches the regular expression
-          for (var i = 0; i < lines.length; i++) {
-            var line = lines[i];
-
-            // Process the line using the regular expression
-            var match = regex.exec(line);
-            if (match !== null) {
-              // Handle the match as needed
-              currentChunk.push(line);
-
-              // Split the string every 25 occurrences based on the regular expression
-              if (currentChunk.length % 25 === 0) {
-                chunks.push(currentChunk);
-                currentChunk = [];
-              }
-            } else {
-              // Include non-"sound" lines in the chunks
-              currentChunk.push(line);
-            }
-          }
-
-          // Output each chunk separately
-          chunks.forEach(function (chunk, chunkindex) {
-            console.log(`Function ${index}-${chunkindex + 1}:`);
-            console.log(chunk.join('\n'));
-          });
-
-          //
           songNotes = [];
           songNoteIndexes = [];
           songNotePauses = [];
