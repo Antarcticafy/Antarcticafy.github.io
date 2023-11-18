@@ -43,8 +43,8 @@
             }
           });
 
-          for (let start = 0; start < songNotePauses.length; start += 50) {
-            let end = start + 49;
+          for (let start = 0; start < songNotePauses.length; start += 25) {
+            let end = start + 24;
             if (end >= songNotePauses.length) {
               end = songNotePauses.length - 1;
             }
@@ -73,7 +73,7 @@
 
           resultArray.forEach((chunk, chunkIndex) => {
             console.log(`//Function L${index}-C${chunkIndex}:\n${chunk}`);
-            console.log(`testing: ${chunkTicks}`);
+            console.log(`testing: ${chunkTicks[chunkIndex]}`);
           });
 
           songNotes = [];
