@@ -51,6 +51,7 @@
             let sum = 0;
             for (let i = start; i <= end; i++) {
               sum += songNotePauses[i];
+              console.log(songNotePauses[i]);
             }
 
             chunkTicks.push(sum);
@@ -70,7 +71,7 @@
           });
 
           resultArray.forEach((chunk, chunkIndex) => {
-            console.log(`//${index}-${chunkIndex}:${(chunkIndex >= 2) ? `//broken right now dont use: \npause ${chunkTicks[chunkIndex-1]}` : ''}\n${chunk}`);
+            console.log(`//${index}-${chunkIndex}:${(chunkIndex >= 2) ? `\npause ${chunkTicks[chunkIndex-1]}` : ''}\n${chunk}`);
           });
 
           songNotes = [];
