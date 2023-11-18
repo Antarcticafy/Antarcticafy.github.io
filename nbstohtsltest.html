@@ -69,7 +69,7 @@
           });
 
           resultArray.forEach((chunk, chunkIndex) => {
-            console.log(`//${index}-${chunkIndex}:\n${chunk}\npause ${chunkTicks[chunkIndex]}`);
+            console.log(`//${index}-${chunkIndex}:\npause ${chunkTicks[chunkIndex-1]}\n${chunk}`);
           });
 
           songNotes = [];
