@@ -28,8 +28,6 @@
           "note.harp", "note.bass", "note.bd", "note.snare", "note.hat", "", "", "", "", "", "", "", "", "", "", "note.pling"
         ];
 
-        // console.log(song);
-
         song["layers"].forEach((element, index) => {
           element["notes"].forEach((element, index, array) => {
             songNoteIndexes.push(index + 1);
@@ -63,7 +61,6 @@
 
             return `sound ${instrument} 0.7 ${value} "invokers_location"\npause ${pauseValue}`;
           }).join("\n");
-          // console.log(result);
 
           result.split('\n').forEach((line, index, array) => {
             if (index % 50 === 0) {
@@ -72,7 +69,7 @@
           });
 
           resultArray.forEach((chunk, chunkIndex) => {
-            console.log(`//Function L${index}-C${chunkIndex}:\n${chunk}\npause ${chunkTicks[chunkIndex]}`);
+            console.log(`//${index}-${chunkIndex}:\n${chunk}\npause ${chunkTicks[chunkIndex]}`);
           });
 
           songNotes = [];
