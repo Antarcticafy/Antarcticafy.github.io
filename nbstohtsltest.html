@@ -51,11 +51,12 @@
             let sum = 0;
             for (let i = start; i <= end; i++) {
               sum += songNotePauses[i];
-              console.log(songNotePauses[i]);
             }
 
             chunkTicks.push(sum);
           }
+
+          console.log(chunkTicks);
 
           const result = songNotes.map((value, index) => {
             const pauseValue = songNotePauses[index] || "5";
@@ -71,7 +72,7 @@
           });
 
           resultArray.forEach((chunk, chunkIndex) => {
-            console.log(`//${index}-${chunkIndex}:${(chunkIndex >= 2) ? `\npause ${chunkTicks[chunkIndex-1]}` : ''}\n${chunk}`);
+            console.log(`//${index}-${chunkIndex}:${(chunkIndex >= 2) ? `\npause ${chunkTicks[chunkIndex - 1]}` : ''}\n${chunk}`);
           });
 
           songNotes = [];
