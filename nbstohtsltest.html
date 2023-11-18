@@ -22,6 +22,7 @@
         let songNoteIndexes = [];
         let songNotePauses = [];
         let songNoteInstrument = [];
+        let chunkTicks = [];
         let resultArray = [];
         const instrumentMapping = [
           "note.harp", "note.bass", "note.bd", "note.snare", "note.hat", "", "", "", "", "", "", "", "", "", "", "note.pling"
@@ -35,11 +36,27 @@
             songNotes.push((Math.round(10000000 * (2 ** (((element.key - 33) - 12) / 12)))) / 10000000);
             songNoteInstrument.push(element.instrument);
           });
+
           songNoteIndexes.forEach((element, index, array) => {
             if (index > 0) {
               songNotePauses.push((element - array[index - 1]) * (20 / song["tempo"]));
             }
           });
+
+          for (let start = 0; start < songNotePauses.length; start += 50) {
+            let end = start + 49;
+            if (end >= songNotePauses.length) {
+              end = songNotePauses.length - 1;
+            }
+
+            let sum = 0;
+            for (let i = start; i <= end; i++) {
+              sum += songNotePauses[i];
+            }
+
+            chunkTicks.push(sum);
+          }
+
           const result = songNotes.map((value, index) => {
             const pauseValue = songNotePauses[index] || "5";
             const instrument = instrumentMapping[songNoteInstrument[index]];
@@ -56,12 +73,14 @@
 
           resultArray.forEach((chunk, chunkIndex) => {
             console.log(`//Function L${index}-C${chunkIndex}:\n${chunk}`);
+            console.log(`testing: ${chunkTicks}`);
           });
 
           songNotes = [];
           songNoteIndexes = [];
           songNotePauses = [];
           songNoteInstrument = [];
+          chunkTicks = [];
           resultArray = [];
 
         });
