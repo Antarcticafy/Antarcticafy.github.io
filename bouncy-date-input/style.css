@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background-color: #222222;
+}
+
+#square {
+  width: 100px;
+  height: 100px;
+  color: #CCC;
+  border: 1px solid #CCC;
+  text-align: center;
+  text-wrap: wrap;
+}
+
+#display, #square, html, body{
+  margin: 0px;
+}
