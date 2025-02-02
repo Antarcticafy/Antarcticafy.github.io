@@ -52,6 +52,12 @@
                 image[word] = image[word].charAt(0).toUpperCase() + image[word].slice(1)
             }
 
+            if (chosenBlockstate.hasOwnProperty("stateGenerators")) {
+                hasSlab = (chosenBlockstate["stateGenerators"].includes("base:slabs_seamless_all") || chosenBlockstate["stateGenerators"].includes("base:slabs_seamed_all")) ? "True" : "False";
+            } else {
+                hasSlab = "False";
+            }
+
             output.innerHTML = `{{Infobox Block
 |title=${engBlockNames[block["stringId"]]} 
 |image=File:${image.join(" ")}.png
@@ -62,7 +68,7 @@
 |canRaycastForPlaceOn=${chosenBlockstate["canRaycastForPlaceOn"] || chosenBlockstate["canRaycastForPlaceOn"] == undefined ? "True" : "False"}
 |canRaycastForReplace=${chosenBlockstate["canRaycastForReplace"] ? "True" : "False"}
 |walkThrough=${chosenBlockstate["walkThrough"] ? "True" : "False"}
-|hasSlab=${chosenBlockstate["stateGenerators"]}
+|hasSlab=${hasSlab}
 |catalogHidden=${chosenBlockstate["catalogHidden"] ? "True" : "False"}
 |versionAdded=[[${window.prompt("What version was this added? (ex: Pre-Alpha_0.0.1)", "Pre-Alpha_x.x.x")}]]
 }}`;
