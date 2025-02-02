@@ -1,1 +1,11 @@
+<input type="file" id="file-input">
 
+<script>
+    window.addEventListener("load", () => {
+        const input = document.getElementById("file-input");
+
+        input.addEventListener("change", () => {
+            console.log(input.files);
+        })
+    })
+</script>
