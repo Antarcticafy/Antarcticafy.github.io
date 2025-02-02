@@ -1,11 +1,79 @@
-<input type="file" id="file-input">
+<h1>Cosmic Reach Block JSON to Wiki Template</h1>
+<p>Upload a JSON file of a block from <code>Cosmic-Reach-x.x.x/base/blocks/(blockname).json'</code></p>
+<input type="file" id="file-input" accept="application/json">
+<br>
+<h2>Output</h2>
+<textarea id="output" spellcheck="false" readonly style="width: 100%;">{{Infobox Block
+|title=File:.png
+|image=
+|stringId=
+|isOpaque=
+|lightAttenuation=
+|canRaycastForBreak=
+|canRaycastForPlaceOn=
+|canRaycastForReplace=
+|walkThrough=
+|hasSlab=
+|catalogHidden=
+|versionAdded=
+}}</textarea>
 
 <script>
     window.addEventListener("load", () => {
         const input = document.getElementById("file-input");
+        const output = document.getElementById("output");
+        output.style.height = output.scrollHeight + 'px'
+        let engBlockNames;
+        fetch("https://raw.githubusercontent.com/FinalForEach/Cosmic-Reach-Localization/refs/heads/master/assets/base/lang/en_us/base_blocks.json")
+            .then((res) => {
+                res.json()
+                    .then((json) => {
+                        engBlockNames = json;
+                    })
+            })
+
+        const fr = new FileReader();
+
+        fr.addEventListener("load", () => {
+            block = JSON.parse(fr.result);
+            answer = window.prompt("which blockstate (choose from these): " + Object.keys(block["blockStates"]).join(", "), Object.keys(block["blockStates"])[0])
+            if (!Object.keys(block["blockStates"]).includes(answer)) {
+                confirm("That is not one of the options");
+                return;
+            }
+            chosenBlockstate = block["blockStates"][answer]
+
+            console.log(block);
+
+            image = block["stringId"].replace("base:", "").split("_")
+
+            for (let word in image) {
+                image[word] = image[word].charAt(0).toUpperCase() + image[word].slice(1)
+            }
+
+            output.innerHTML = `{{Infobox Block
+|title=${engBlockNames[block["stringId"]]} 
+|image=File:${image.join(" ")}.png
+|stringId="${block["stringId"]}"
+|isOpaque=${chosenBlockstate["isOpaque"] || chosenBlockstate["isOpaque"] == undefined ? "True" : "False"}
+|lightAttenuation=${chosenBlockstate["lightAttenuation"] ? chosenBlockstate["lightAttenuation"] : 15}
+|canRaycastForBreak=${chosenBlockstate["canRaycastForBreak"] || chosenBlockstate["canRaycastForBreak"] == undefined ? "True" : "False"}
+|canRaycastForPlaceOn=${chosenBlockstate["canRaycastForPlaceOn"] || chosenBlockstate["canRaycastForPlaceOn"] == undefined ? "True" : "False"}
+|canRaycastForReplace=${chosenBlockstate["canRaycastForReplace"] ? "True" : "False"}
+|walkThrough=${chosenBlockstate["walkThrough"] ? "True" : "False"}
+|hasSlab=${chosenBlockstate["stateGenerators"]}
+|catalogHidden=${chosenBlockstate["catalogHidden"] ? "True" : "False"}
+|versionAdded=[[${window.prompt("What version was this added? (ex: Pre-Alpha_0.0.1)", "Pre-Alpha_x.x.x")}]]
+}}`;
+            output.style.height = output.scrollHeight + 'px'
+        }, false,);
 
         input.addEventListener("change", () => {
-            console.log(input.files);
+            if (input.files[0]["type"] != "application/json") {
+                confirm("That is not a json");
+                return;
+            }
+            fr.readAsText(input.files[0]);
         })
     })
 </script>
