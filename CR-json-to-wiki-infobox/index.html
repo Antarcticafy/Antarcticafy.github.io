@@ -63,7 +63,7 @@
 |image=File:${image.join(" ")}.png
 |stringId="${block["stringId"]}"
 |isOpaque=${chosenBlockstate["isOpaque"] || chosenBlockstate["isOpaque"] == undefined ? "True" : "False"}
-|lightAttenuation=${chosenBlockstate["lightAttenuation"] ? chosenBlockstate["lightAttenuation"] : 15}
+|lightAttenuation=${chosenBlockstate["lightAttenuation"]!=undefined ? chosenBlockstate["lightAttenuation"] : 15}
 |canRaycastForBreak=${chosenBlockstate["canRaycastForBreak"] || chosenBlockstate["canRaycastForBreak"] == undefined ? "True" : "False"}
 |canRaycastForPlaceOn=${chosenBlockstate["canRaycastForPlaceOn"] || chosenBlockstate["canRaycastForPlaceOn"] == undefined ? "True" : "False"}
 |canRaycastForReplace=${chosenBlockstate["canRaycastForReplace"] ? "True" : "False"}
