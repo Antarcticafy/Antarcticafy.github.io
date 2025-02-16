@@ -63,7 +63,7 @@
 
             output.innerHTML = `{{Infobox Block
 |title=${engBlockNames[block["stringId"]]} 
-|image=File:${image.join("")}.png
+|image=${image.join("")}.png
 |stringId="${block["stringId"]}"
 |isOpaque=${chosenBlockstate["isOpaque"] || chosenBlockstate["isOpaque"] == undefined ? "True" : "False"}
 |lightAttenuation=${chosenBlockstate["lightAttenuation"] != undefined ? chosenBlockstate["lightAttenuation"] : 15}
