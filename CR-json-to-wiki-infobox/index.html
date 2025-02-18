@@ -61,6 +61,12 @@
                 hasSlab = "False";
             }
 
+            if (chosenBlockstate.hasOwnProperty("stateGenerators")) {
+                hasStair = (chosenBlockstate["stateGenerators"].includes("base:stairs_seamless_all") || chosenBlockstate["stateGenerators"].includes("base:stairs_seamed_all")) ? "True" : "False";
+            } else {
+                hasStair = "False";
+            }
+
             output.innerHTML = `{{Infobox Block
 |title=${engBlockNames[block["stringId"]]} 
 |image=${image.join("")}.png
@@ -72,6 +78,7 @@
 |canRaycastForReplace=${chosenBlockstate["canRaycastForReplace"] ? "True" : "False"}
 |walkThrough=${chosenBlockstate["walkThrough"] ? "True" : "False"}
 |hasSlab=${hasSlab}
+|hasStair=${hasStiar}
 |catalogHidden=${chosenBlockstate["catalogHidden"] ? "True" : "False"}
 |versionAdded=[[${window.prompt("What version was this added? (e.g., Pre-Alpha 0.0.1)", "Pre-Alpha x.x.x")}]]
 }}`;
