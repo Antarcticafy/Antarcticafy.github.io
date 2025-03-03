@@ -303,7 +303,14 @@
 		<span id="output-span">
 			<p style="text-align: center;">
 				Output file<button id="download-button" 
-				onclick="console.log(document.getElementById('canvas').toDataURL())">Download</button>
+				onclick="
+				var link = document.createElement('a');
+				link.href = document.getElementById('canvas').toDataURL();
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+				delete link;
+				">Download</button>
 			</p>
 			<canvas id="canvas" width="128" height="64"></canvas>
 		</span>
