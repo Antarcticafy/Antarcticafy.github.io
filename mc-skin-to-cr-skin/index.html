@@ -31,6 +31,8 @@
 			const inputPreviewElement = document.getElementById("input-preview");
 			const skinTypeElement = document.getElementById("skin-type");
 			const usernameInputElement = document.getElementById("username-input");
+			const usernameSubmitElement = document.getElementById("username-submit");
+			const downloadButtonElement = document.getElementById("download-button");
 
 			defaultOutputImage = new Image();
 			defaultOutputImage.src = "cr-skin.png";
@@ -254,13 +256,21 @@
 					drawAll();
 				}
 
-				usernameInputElement.onchange = () => {
-					fetch("https://sessionserver.mojang.com/session/minecraft/profile/853c80ef3c3749fdaa49938b674adae6")
-					.then(response => response.json())
-					.then(data => console.log(data.content));
+				usernameSubmitElement.onclick = (e) => {
+					inputPreviewElement.src = `https://mineskin.eu/skin/${usernameInputElement.value}`
 
-					inputPreviewElement.src
+					inputPreviewElement.onload = () => { 
+						drawAll();
+					}
 				}
+
+				downloadButtonElement.onclick = () => {
+					var link = document.createElement('a');
+					link.download = 'skin.png';
+					link.href = canvas.toDataURL()
+					link.click();
+				}
+				
 
 				fr.addEventListener("load", () => {
 					inputPreviewElement.src = fr.result;
@@ -288,7 +298,7 @@
 		<h1>Minecraft skin to Cosmic Reach skin converter</h1>
 		<input type="file" id="file-input" accept="image/png" style="font-family: 'Noto Sans';">
 		<p style="margin-top: 0; margin-bottom: 0;">or</p>
-		<input type="text" id="username-input" placeholder="Enter a Minecraft Java username" size="50%"></input>
+		<input type="text" id="username-input" placeholder="Enter a Minecraft Java username" size="50%"></input><input type="submit" id="username-submit"></input>
 		<br>
 		<label for="skin-type">Original MC skin type:</label>
 		<select name="skin-type" id="skin-type">
@@ -302,15 +312,7 @@
 		</span>
 		<span id="output-span">
 			<p style="text-align: center;">
-				Output file<button id="download-button" 
-				onclick="
-				var link = document.createElement('a');
-				link.href = document.getElementById('canvas').toDataURL();
-				document.body.appendChild(link);
-				link.click();
-				document.body.removeChild(link);
-				delete link;
-				">Download</button>
+				Output file<button id="download-button" >Download</button>
 			</p>
 			<canvas id="canvas" width="128" height="64"></canvas>
 		</span>
