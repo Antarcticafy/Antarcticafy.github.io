@@ -3,23 +3,25 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <script>
-        window.onload = function () {
+        window.onload = () => {
+            const dateP = document.getElementById('date');
+            const dateUTCP = document.getElementById('date-utc');
             setInterval(() => {
-                var date = new Date();
-                document.getElementById('date').innerHTML = date;
+                dateP.innerHTML = new Date().toString();
+                dateUTCP.innerHTML = new Date().toUTCString();
             }, 1);
         };
     </script>
     <style>
-        #date {
+        #date, #date-utc {
             text-align: center;
             font-family: "Open Sans";
             font-size: 50px;
-            font-family: "Open Sans";
         }
     </style>
 </head>
 
 <body>
     <p id="date"></p>
+    <p id="date-utc"></p>
 </body>
